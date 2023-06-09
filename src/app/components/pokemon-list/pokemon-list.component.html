@@ -1,8 +1,13 @@
 <div class="container">
 	<h1>List of Pokemon</h1>
 	<ul class="list-group">
-		<a *ngFor="let pokemon of pokemons" [routerLink]="['/pokemon', 'pokemon.name']" class="list-group-item list-group-item-action animate__animated animate__bounce animate__fadeIn">
-			{{pokemon.name}}
-		</a>
+		<li *ngFor="let poke of pokemons" style="width:200px; height:200px;">
+			<a [routerLink]="['/pokemon', 'pokemon.name']" class="list-group-item list-group-item-action animate__animated animate__bounce animate__fadeIn">
+				{{ poke.name }}	
+				<img src="{{ poke.img }}" alt="imagen" style="width: 100%; max-height: 1005;">
+			</a>
+		</li>
+	
+		
 	</ul>
 </div>
