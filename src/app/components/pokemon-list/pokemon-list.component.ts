@@ -20,7 +20,7 @@ export class PokemonListComponent {
       this.pokemonService.getAllPokemons(i).subscribe(
         pokeData => {
           const pokemon = {
-            img: pokeData.sprites.other.dream_world.front_default,
+            img: pokeData.sprites.home,
             name: pokeData.name
           };
           this.pokemons.push(pokemon);
