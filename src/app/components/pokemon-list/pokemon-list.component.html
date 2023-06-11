@@ -1,13 +1,21 @@
-<div class="container" *ngIf="pokemons">
-	<h1>List of Pokemon</h1>
-	<ul class="list-group">
-		<li *ngFor="let poke of pokemons" style="width:600px; height:200px;">
-			<a [routerLink]="['/pokemon', poke.name ]" class="list-group-item list-group-item-action animate__animated animate__bounce animate__fadeIn">
-				<h2>{{ poke.id }} - {{ poke.name }}</h2>
-				<img src="" alt="imagen" style="max-width: 100%; width: 100%; max-height: 100%;">
-			</a>
-		</li>
+
+
+	<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+		<ng-container matColumnDef="order">
+		<th mat-header-cell *matHeaderCellDef> Order </th>
+		<td mat-cell *matCellDef="let pokemon"><a [routerLink]="['/pokemon', 'pokemon.name']"> {{ pokemon.order }} </a> </td>
+		</ng-container>
 	
-		
-	</ul>
-</div>
+		<ng-container matColumnDef="name">
+		<th mat-header-cell *matHeaderCellDef> Name </th>
+		<td mat-cell *matCellDef="let pokemon"> {{ pokemon.name }} </td>
+		</ng-container>
+	
+		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+	
+	</table>
+
+	
+  
