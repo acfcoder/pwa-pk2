@@ -16,12 +16,18 @@ export class PokemonListComponent {
 
   ngOnInit(): void {
 
-    for (let i = 1; i < 150; i++){
+    for (let i = 1; i < 15; i++){
       this.pokemonService.getAllPokemons(i).subscribe(
         pokeData => {
           const pokemon = {
-            img: pokeData.sprites.home,
-            name: pokeData.name
+            id: pokeData.id,
+            img: pokeData.sprites.other.home.front_default,
+            name: pokeData.name,
+            height: pokeData.height,
+            weight: pokeData.weight,
+            order: pokeData.order,
+            type: pokeData.types,
+            moves: pokeData.moves,
           };
           this.pokemons.push(pokemon);
         }
