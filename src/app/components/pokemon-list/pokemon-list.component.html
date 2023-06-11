@@ -4,7 +4,7 @@
 
 		<ng-container matColumnDef="order">
 		<th mat-header-cell *matHeaderCellDef> Order </th>
-		<td mat-cell *matCellDef="let pokemon"><a [routerLink]="['/pokemon', 'pokemon.name']"> {{ pokemon.order }} </a> </td>
+		<td mat-cell *matCellDef="let pokemon"> {{ pokemon.order }} </td>
 		</ng-container>
 	
 		<ng-container matColumnDef="name">
