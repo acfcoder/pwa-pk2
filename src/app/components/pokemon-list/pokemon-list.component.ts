@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Pokemon } from 'src/app/models/pokemon.interface';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
@@ -7,12 +9,24 @@ import { PokemonService } from 'src/app/services/pokemon.service';
   templateUrl: './pokemon-list.component.html',
   styleUrls: ['./pokemon-list.component.scss']
 })
-export class PokemonListComponent implements OnInit {
+export class PokemonListComponent implements OnInit,AfterViewInit {
 
   pokemons: Pokemon[] = [];
-  pokeData = [];
+  dataSource = new MatTableDataSource<Pokemon>;
+  displayedColumns: string[] = ['img', 'name'];
+ 
 
-  constructor(private pokemonService: PokemonService) {}
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+
+  
+  constructor(private pokemonService: PokemonService) {
+    this.dataSource = new MatTableDataSource<Pokemon>(this.pokemons);
+  }
+ 
+  ngAfterViewInit() {
+      this.dataSource.paginator = this.paginator;
+  }
 
   ngOnInit(): void {
 
@@ -29,9 +43,10 @@ export class PokemonListComponent implements OnInit {
             master_img: pokeData.sprites.other['official-artwork'].front_default,
           };
           this.pokemons.push(pokemon);
+          this.dataSource.data = this.pokemons;
         }
       );
     }
-   console.log (this.pokemons);
+    
   }
 }
