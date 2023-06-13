@@ -1,1 +1,100 @@
 /* You can add global styles to this file, and also import other style files */
+@use "@material/card";
+
+@use "@angular/material";
+
+@use "@angular/material" as mat;
+
+$my-typography: mat.define-typography-config(
+  $font-family: "Lilita One",
+);
+
+// Now we have sweet buttons with Comic Sans.
+@include mat.button-typography($my-typography);
+
+@include mat.typography-hierarchy($my-typography);
+@include card.core-styles;
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-image: url("assets/img/back-top.svg");
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #f44336;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0 auto;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.container {
+  max-width: 90%;
+  width: 480px;
+  margin: 0 auto;
+}
+
+.mat-h1 {
+  font-size: 4em;
+  text-align: center;
+}
+
+mat-card {
+  margin: 2rem auto;
+}
+
+.mdc-card__media {
+  height: 440px;
+}
+
+mat-card-title {
+  font-size: 21rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.my-card,
+.poke-list {
+  width: 500px;
+  max-width: 100%;
+  margin: 2em auto;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-family: "Lilita one", sans-serif;
+  padding: 0.5em;
+  margin: 0.5em 0;
+}
+
+.typo {
+  font-size: 3.5em !important;
+  line-height: 1em !important;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  background-color: red;
+}
+
+.mdc-tab__text-label,
+.mat-expansion-panel-header-title {
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-family: "Lilita one", sans-serif;
+  padding: 1em;
+}
+
+.separator {
+  display: block;
+  height: 50px;
+}

@@ -1,1 +1,77 @@
-<p>pokemon works!</p>
+<div class="container">
+	
+	<div class="botonera">
+		<button mat-raised-button color="accent" (click)="back()" ><mat-icon>arrow_circle_left</mat-icon>Prev.</button>
+		<button mat-raised-button color="accent" (click)="next()" >Next<mat-icon>arrow_circle_right</mat-icon></button>
+
+	</div>
+	
+
+	<div class="poke-card" *ngIf="pokemon.length > 0">
+		<mat-card class="my-card mat-elevation-z8">
+			<mat-card-header>
+			<div mat-card-avatar class="my-card__header--image" style=" background-image: url('{{pokemon[0].home_img}}');"></div>
+				<mat-card-title>{{ pokemon[0].name }}</mat-card-title>
+				<mat-card-subtitle>#{{ pokemon[0].id}}</mat-card-subtitle>
+			</mat-card-header>
+
+			<img mat-card-image src="{{ pokemon[0].img }}" alt="Photo of {{ pokemon[0].name }}">
+			<mat-divider></mat-divider>
+			
+			<mat-card-content>
+
+				<mat-tab-group animationDuration="800ms" color="warn">
+					<mat-tab label="TYPE" style="text-transform: uppercase"><span class="upper"><br> {{ pokemon[0].type }}</span></mat-tab>
+					<mat-tab label="HEIGHT"><br>{{ pokemon[0].height }} m</mat-tab>
+					<mat-tab label="WEIGHT"><br>{{ pokemon[0].weight }} kg</mat-tab>
+				</mat-tab-group>
+				<mat-divider></mat-divider>
+				<br>
+				<button mat-raised-button color="accent" (click)="toggleContent()">
+					Show all details
+				</button>
+				
+				<div class="more" *ngIf="showContent">
+					<mat-accordion>
+						<mat-expansion-panel hideToggle>
+						<mat-expansion-panel-header>
+							<mat-panel-title>
+							MOVEMENTS
+							</mat-panel-title>
+						</mat-expansion-panel-header>
+						<p>{{ pokemon[0].moves }}</p>
+						</mat-expansion-panel>
+					</mat-accordion>
+					<mat-accordion>
+						<mat-expansion-panel hideToggle>
+						<mat-expansion-panel-header>
+							<mat-panel-title>
+							ORIGINAL IMAGE
+							</mat-panel-title>
+						</mat-expansion-panel-header>
+						<div class="images__container">
+							<div>
+								<img mat-card-image src="{{ pokemon[0].master_img }}" alt="Photo of {{ pokemon[0].name }}">
+							</div>	
+						
+						</div>
+						</mat-expansion-panel>
+					</mat-accordion>
+				</div>
+				
+			</mat-card-content>
+			<mat-divider></mat-divider>
+			
+			<mat-card-actions>
+
+			<button mat-raised-button color="accent" [routerLink]="['/']"><mat-icon>home</mat-icon>Let's back</button>
+			
+			</mat-card-actions>
+		</mat-card>
+
+	</div>
+	<div class="separator">
+
+	</div>
+
+</div>
