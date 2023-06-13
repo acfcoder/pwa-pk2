@@ -1,0 +1,118 @@
+{
+  "configVersion": 1,
+  "timestamp": 1686700233851,
+  "index": "/pwa-pk/index.html",
+  "assetGroups": [
+    {
+      "name": "PokeApi",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/pwa-pk/favicon.ico",
+        "/pwa-pk/index.html",
+        "/pwa-pk/main.7973932c81d822bd.js",
+        "/pwa-pk/manifest.webmanifest",
+        "/pwa-pk/polyfills.88e5580886c55474.js",
+        "/pwa-pk/runtime.7bb3b0a74fdc6665.js",
+        "/pwa-pk/styles.e96369ff3c6c91b4.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/pwa-pk/assets/css/animate.css",
+        "/pwa-pk/assets/ex/ex.json",
+        "/pwa-pk/assets/icons/icon-128x128.png",
+        "/pwa-pk/assets/icons/icon-144x144.png",
+        "/pwa-pk/assets/icons/icon-152x152.png",
+        "/pwa-pk/assets/icons/icon-192x192.png",
+        "/pwa-pk/assets/icons/icon-384x384.png",
+        "/pwa-pk/assets/icons/icon-512x512.png",
+        "/pwa-pk/assets/icons/icon-72x72.png",
+        "/pwa-pk/assets/icons/icon-96x96.png",
+        "/pwa-pk/assets/img/back-top.svg",
+        "/pwa-pk/back-top.223ad8a2b715e2f3.svg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "poke-api",
+      "patterns": [
+        "https:\\/\\/pokeapi\\.co\\/api\\/v2\\/pokemon\\/.*"
+      ],
+      "strategy": "freshness",
+      "maxSize": 150,
+      "maxAge": 7200000,
+      "timeoutMs": 2000,
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "version": 1
+    },
+    {
+      "name": "poke-img",
+      "patterns": [
+        "https:\\/\\/raw\\.githubusercontent\\.com\\/PokeAPI\\/sprites\\/.*"
+      ],
+      "strategy": "freshness",
+      "maxSize": 150,
+      "maxAge": 7200000,
+      "timeoutMs": 2000,
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "version": 1
+    }
+  ],
+  "hashTable": {
+    "/pwa-pk/assets/css/animate.css": "3dc70f1a3c29089a27418c9ce431cb439f41a5ad",
+    "/pwa-pk/assets/ex/ex.json": "d453cb519dcba2eadeec98c92771ba6eddadf8b5",
+    "/pwa-pk/assets/icons/icon-128x128.png": "56b4d119d2e36358a2f1fa41360426cb0c6a239a",
+    "/pwa-pk/assets/icons/icon-144x144.png": "f1aebc8ca0ac1bd0df02c9ab092282c2abcd312d",
+    "/pwa-pk/assets/icons/icon-152x152.png": "a34c8da9b38e1f0dd4eb6790b84fff2cbbba9a4a",
+    "/pwa-pk/assets/icons/icon-192x192.png": "ebcce91889d6caa98a889eabff41b9cd7b41bda4",
+    "/pwa-pk/assets/icons/icon-384x384.png": "1d5bb8cb8ec070739500ac2a2d9d9cdb584b376e",
+    "/pwa-pk/assets/icons/icon-512x512.png": "a24d5eac118d6ad6be50ff908556c6df71edc5c3",
+    "/pwa-pk/assets/icons/icon-72x72.png": "fb6dbc739874f3353e02abe58c22ae559e27811f",
+    "/pwa-pk/assets/icons/icon-96x96.png": "88ea4fdc1c0ef78ff7bdd1773f04f3de325bf090",
+    "/pwa-pk/assets/img/back-top.svg": "41b475ef6af213e2b398e459f5d7c2771ce78fc0",
+    "/pwa-pk/back-top.223ad8a2b715e2f3.svg": "41b475ef6af213e2b398e459f5d7c2771ce78fc0",
+    "/pwa-pk/favicon.ico": "fb6dbc739874f3353e02abe58c22ae559e27811f",
+    "/pwa-pk/index.html": "fe6ebe7fe07e47932d0accb881ad78c5752aded3",
+    "/pwa-pk/main.7973932c81d822bd.js": "c1b93907cda819abd98f4f5813003d56b90b19df",
+    "/pwa-pk/manifest.webmanifest": "107f1ca92beff464d8489dd7ba12c428ebee17bd",
+    "/pwa-pk/polyfills.88e5580886c55474.js": "c3aefb1a2308204e9c641d264ca894a8d8c72141",
+    "/pwa-pk/runtime.7bb3b0a74fdc6665.js": "9f46bea13499a588108b133932d7a9add7626a66",
+    "/pwa-pk/styles.e96369ff3c6c91b4.css": "811ffdaefc5a4fd54598f0a9dc49e41f3381b9b3"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
