@@ -1,8 +1,15 @@
 
-<div class="mat-elevation-z6 poke-list">
-	<h1 class="title">Choose your favourite Pokemon</h1>
+<div class="mat-elevation-z6 poke-list" >
+	<h1 class="title typo">Choose your favourite Pokemon</h1>
+	<mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+		<mat-button-toggle (click)="viewCards()">cards</mat-button-toggle>
+		<mat-button-toggle (click)="viewList()">list</mat-button-toggle>
+	  </mat-button-toggle-group>
+
+	<div class="show-list" *ngIf="showList"> 
+	
 	<table mat-table [dataSource]="dataSource">
-		
+	
 	  <!-- Position Column -->
 	  <ng-container matColumnDef="img">
 		<th mat-header-cell *matHeaderCellDef></th>
@@ -12,15 +19,30 @@
 	  <!-- Name Column -->
 	  <ng-container matColumnDef="name">
 		<th mat-header-cell *matHeaderCellDef></th>
-		<td mat-cell *matCellDef="let element"><button mat-flat-button color="accent" [routerLink]="['/pokemon', element.name ]" class="animate__animated animate__bounce animate__fadeIn title">{{element.name}} </button> </td>
+		<td mat-cell *matCellDef="let element" [routerLink]="['/pokemon', element.name ]" class="animate__animated animate__bounce animate__fadeIn title">{{element.name}} </td>
 	  </ng-container>
   
 	  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 	  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 	</table>
-  
-	<mat-paginator [pageSizeOptions]="[5, 10, 20]"
-				   showFirstLastButtons
-				   aria-label="Select page of pokemons">
-	</mat-paginator>
-  </div>
+		<mat-paginator [pageSizeOptions]="[5, 10, 20]"
+						showFirstLastButtons
+						aria-label="Select page of pokemons">
+		</mat-paginator>	
+	</div>
+
+
+	
+	<div class="card-container poke-cards" *ngIf="showCards">
+		<div class="poke-cards" *ngFor="let poke of pokemons">
+			<mat-card class="my-cards" [routerLink]="['/pokemon', poke.name ]" class="animate__animated animate__bounce animate__fadeIn">
+				<img mat-card-image src="{{ poke.img }}" alt="Photo of {{ poke.name }}">
+				<mat-card-header>
+				<mat-card-title style="font-size: 2em;">{{ poke.name }}</mat-card-title>
+				</mat-card-header>
+			</mat-card>
+		
+		</div>
+		
+	</div>
+</div>

@@ -33,8 +33,17 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.mat-h1 {
+  font-size: 4em;
+  text-align: center;
+}
+
 mat-card {
   margin: 2rem auto;
+}
+
+.mdc-card__media {
+  height: 440px;
 }
 
 mat-card-title {
@@ -54,9 +63,27 @@ mat-card-title {
   font-weight: 500;
   text-transform: uppercase;
   font-family: "Lilita one", sans-serif;
-  padding: 2em 1em;
-  margin: 2em auto;
-  a {
-    text-decoration: none;
-  }
+  padding: 1em;
+  margin: 0.5em auto;
+}
+
+.typo {
+  font-size: 3.5em !important;
+  line-height: 1em !important;
+  text-align: center;
+  color: white;
+  background-color: red;
+}
+
+.mdc-tab__text-label,
+.mat-expansion-panel-header-title {
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-family: "Lilita one", sans-serif;
+  padding: 1em;
+}
+
+.container {
+  margin: 0 auto;
 }

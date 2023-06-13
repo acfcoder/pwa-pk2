@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { PokemonPlus } from 'src/app/models/pokemonPlus.interface';
 import { PokemonService } from 'src/app/services/pokemon.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -22,10 +21,6 @@ export class PokemonComponent implements OnInit {
 
   showContent: boolean = false;
 
-  toggleContent() {
-    this.showContent = !this.showContent;
-  }
-
   constructor(
     private pokemonService: PokemonService,
     private activatedRoute: ActivatedRoute,
@@ -33,32 +28,69 @@ export class PokemonComponent implements OnInit {
     ) {
     }
   
+    toggleContent() {
+      this.showContent = !this.showContent;
+    }
+  
+    identifier = this.activatedRoute.snapshot.paramMap.get('id');
+    next() {
+      if (this.pokemon.length > 0) {
+        const lastPokemon = this.pokemon[0];
+        let newId;
+        if (lastPokemon.id + 1 > 1010 ) {
+          newId = 1010;
+        } else {
+          newId = lastPokemon.id + 1;
+        }
+        this.identifier = newId.toString();
+        this.pokeData();
+      }
+    }
+    
+    back() {
+      if (this.pokemon.length > 0) {
+        const lastPokemon = this.pokemon[0];
+        let newId;
+        if (lastPokemon.id - 1 < 1 ) {
+         newId = 1;
+        } else {
+           newId = lastPokemon.id - 1;
+        }
+        this.identifier = newId.toString();
+        this.pokeData();
+      }
+    }
+    
 
   ngOnInit(): void {
-    
-    const identifier = this.activatedRoute.snapshot.paramMap.get('id');
-    console.log('Identifier --> ', identifier);
+   this.pokeData() 
+   
+  }
 
-    if (identifier) {
-      this.pokemonService.getPokemonById(identifier).subscribe(
+  pokeData() {
+   
+    if (this.identifier) {
+      
+      this.pokemonService.getPokemonById(this.identifier).subscribe(
         (pokeData2) => {
         
      if (!pokeData2) {
           return this.router.navigateByUrl('/');
         }
         
+        this.pokemon = []; //Borrado del acumulado para permitir navegación en fichas.
+        this.typeData = [];
+        this.moves = [];
         for (let i = 0; i < pokeData2.types.length; i++) {
           const typeList = pokeData2.types[i].type.name;
           this.typeData.push(typeList);
           this.type = this.typeData.join('-');
-         
         }
 
         for (let i = 0; i < pokeData2.moves.length; i++) {
           const movesList = pokeData2.moves[i].move.name;
           this.moves.push(movesList);
         }
-        console.log (this.type);
 
         const pokemonData = {
           id: pokeData2.id,
@@ -71,12 +103,19 @@ export class PokemonComponent implements OnInit {
           order: pokeData2.order,
           type: this.type,
           moves: this.moves,
+          };
+
+        if (pokemonData.img == null){
+          pokemonData.img = pokemonData.master_img;
+         
         };
 
+        if (pokemonData.home_img == null){
+          pokemonData.home_img = pokemonData.master_img;
+        } ;
 
-          this.pokemon.push(pokemonData);
-          return console.log(this.pokemon); 
-  
+         this.pokemon.push(pokemonData);
+          return console.log(pokemonData)
         }
       )
     }
