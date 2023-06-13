@@ -1,14 +1,18 @@
 <div class="container">
-	<button mat-raised-button color="warn" (click)="back()" >Prev.</button>
-	<button mat-raised-button color="warn" (click)="next()" >Next</button>
+	
+	<div class="botonera">
+		<button mat-raised-button color="warn" (click)="back()" ><mat-icon>arrow_circle_left</mat-icon>Prev.</button>
+		<button mat-raised-button color="warn" (click)="next()" >Next<mat-icon>arrow_circle_right</mat-icon></button>
 
+	</div>
+	
 
 	<div class="poke-card" *ngIf="pokemon.length > 0">
-		<mat-card class="my-card">
+		<mat-card class="my-card mat-elevation-z8">
 			<mat-card-header>
 			<div mat-card-avatar class="my-card__header--image" style=" background-image: url('{{pokemon[0].home_img}}');"></div>
-			<mat-card-title>{{ pokemon[0].name }}</mat-card-title>
-			<mat-card-subtitle>#{{ pokemon[0].order}}</mat-card-subtitle>
+				<mat-card-title>{{ pokemon[0].name }}</mat-card-title>
+				<mat-card-subtitle>#{{ pokemon[0].id}}</mat-card-subtitle>
 			</mat-card-header>
 
 			<img mat-card-image src="{{ pokemon[0].img }}" alt="Photo of {{ pokemon[0].name }}">
@@ -24,7 +28,7 @@
 				<mat-divider></mat-divider>
 				<br>
 				<button mat-raised-button color="accent" (click)="toggleContent()">
-					See More
+					Show all details
 				</button>
 				
 				<div class="more" *ngIf="showContent">
@@ -60,10 +64,13 @@
 			
 			<mat-card-actions>
 
-			<button mat-raised-button color="warn" [routerLink]="['/']" color="warn">Let's back</button>
+			<button mat-raised-button color="warn" [routerLink]="['/']" color="warn"><mat-icon>home</mat-icon>Let's back</button>
 			
 			</mat-card-actions>
 		</mat-card>
+
+	</div>
+	<div class="separator">
 
 	</div>
 

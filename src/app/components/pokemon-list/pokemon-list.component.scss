@@ -10,10 +10,12 @@
 }
 
 mat-card-title {
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 500;
   text-transform: uppercase;
   font-family: "Lilita one", sans-serif;
+  margin: 1rem 0;
+  padding-right: 0;
 }
 
 .upper {
@@ -84,6 +86,20 @@ mat-card {
   cursor: pointer;
 }
 
-mat-cell {
+.mdc-data-table__cell {
   cursor: pointer;
+}
+
+.center {
+  text-align: center !important;
+}
+
+.btns-to-right {
+  text-align: right;
+  margin: 0 1em;
+  margin-left: 70%;
+}
+
+.poke-list {
+  background-color: white;
 }

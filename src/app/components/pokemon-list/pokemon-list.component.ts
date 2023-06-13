@@ -14,10 +14,9 @@ export class PokemonListComponent implements OnInit,AfterViewInit {
   pokemons: Pokemon[] = [];
   dataSource = new MatTableDataSource<Pokemon>;
   displayedColumns: string[] = ['img', 'name'];
+  view:string = 'list';
 
-  //toggle vistas
-  showList: boolean = true;
-  showCards: boolean = false;
+
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -25,24 +24,15 @@ export class PokemonListComponent implements OnInit,AfterViewInit {
   constructor(private pokemonService: PokemonService) {
     this.dataSource = new MatTableDataSource<Pokemon>(this.pokemons);
   }
-
-  viewList() {
-    this.showList = true;
-    this.showCards = false;
-  }
-
-  viewCards() {
-    this.showList = false;
-    this.showCards = true;
-  }
  
   ngAfterViewInit() {
       this.dataSource.paginator = this.paginator;
+   
   }
 
   ngOnInit(): void {
 
-    for (let i = 1; i < 15; i++){
+    for (let i = 1; i < 150; i++){
       this.pokemonService.getAllPokemons(i).subscribe(
         pokeData => {
           const pokemon = {
@@ -55,7 +45,7 @@ export class PokemonListComponent implements OnInit,AfterViewInit {
             master_img: pokeData.sprites.other['official-artwork'].front_default,
           };
           this.pokemons.push(pokemon);
-          this.dataSource.data = this.pokemons
+          this.dataSource.data = this.pokemons;
         }
       );
     }
