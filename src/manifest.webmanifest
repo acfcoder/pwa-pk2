@@ -1,6 +1,6 @@
 {
-  "name": "pwa-pk2",
-  "short_name": "pwa-pk2",
+  "name": "PoekeApi",
+  "short_name": "PokeAPI",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",

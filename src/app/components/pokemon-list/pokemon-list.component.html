@@ -3,10 +3,10 @@
 	<div class="mat-elevation-z8 poke-list container" >
 		<h1 class="title typo">Choose your Pokemon</h1>
 		<mat-button-toggle-group class="btns-to-right" name="view" aria-label="views" [(ngModel)]="view">
-			<mat-button-toggle value="cards">
+			<mat-button-toggle value="cards" aria-label="Grid view">
 				<mat-icon class="">grid_view</mat-icon>
 			</mat-button-toggle>
-			<mat-button-toggle value="list" >
+			<mat-button-toggle value="list"  aria-label="List view" >
 				<mat-icon class="">list</mat-icon>
 			</mat-button-toggle>
 		</mat-button-toggle-group>
@@ -18,7 +18,7 @@
 			<!-- Position Column -->
 			<ng-container matColumnDef="img">
 				<th mat-header-cell *matHeaderCellDef></th>
-				<td mat-cell class="center" *matCellDef="let element"><a [routerLink]="['/pokemon', element.name ]" class="animate__animated animate__bounce animate__fadeIn"><span class="avatar" style="background-image: url('{{element.home_img}}');"></span></a></td>
+				<td mat-cell class="center" *matCellDef="let element" [routerLink]="['/pokemon', element.name ]" class="animate__animated animate__bounce animate__fadeIn"><span class="avatar" style="background-image: url('{{element.home_img}}');"></span></td>
 			</ng-container>
 		
 			<!-- Name Column -->
