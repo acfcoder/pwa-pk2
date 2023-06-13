@@ -7,7 +7,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
   templateUrl: './pokemon-list.component.html',
   styleUrls: ['./pokemon-list.component.scss']
 })
-export class PokemonListComponent {
+export class PokemonListComponent implements OnInit {
 
   pokemons: Pokemon[] = [];
   pokeData = [];
@@ -23,11 +23,10 @@ export class PokemonListComponent {
             id: pokeData.id,
             img: pokeData.sprites.other.home.front_default,
             name: pokeData.name,
-            height: pokeData.height,
-            weight: pokeData.weight,
             order: pokeData.order,
             type: pokeData.types,
-            moves: pokeData.moves,
+            home_img: pokeData.sprites.other.home.front_default,
+            master_img: pokeData.sprites.other['official-artwork'].front_default,
           };
           this.pokemons.push(pokemon);
         }

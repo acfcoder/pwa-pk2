@@ -1,0 +1,45 @@
+.my-card {
+  max-width: 400px;
+}
+
+.my-card__header--image {
+  background-size: cover;
+}
+
+mat-card {
+  margin: 2rem auto;
+}
+
+mat-card-title {
+  font-size: 2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-family: "Lilita one", sans-serif;
+}
+
+.upper {
+  text-transform: uppercase;
+}
+
+mat-expansion-panel {
+  box-shadow: none !important;
+}
+
+mat-divider {
+  margin: 2em 0 0;
+}
+
+.more {
+  margin-top: 2em;
+}
+
+.images__container {
+  display: flex;
+  img {
+    max-width: 100%;
+  }
+}
+
+.mdc-card__media {
+  padding: 2em;
+}

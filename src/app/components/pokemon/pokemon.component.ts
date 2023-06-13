@@ -1,20 +1,30 @@
+import { NgModule } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { Pokemon } from 'src/app/models/pokemon.interface';
+import { PokemonPlus } from 'src/app/models/pokemonPlus.interface';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-list',
   templateUrl: './pokemon.component.html',
-  styleUrls: ['./pokemon.component.scss']
+  styleUrls: ['./pokemon.component.scss'],
+ /* standalone: true,
+  imports: [MatCardModule, MatButtonModule],*/
 })
 export class PokemonComponent implements OnInit {
 
-  pokemon: Pokemon[] = [];
+  pokemon: PokemonPlus[] = [];
   pokeData2: any[] = [];
-  type: string[] = [];
+  typeData: string[] = []; 
+  type: string = '';
   moves: string[] = [];
- 
+  panelOpenState = false;
+
+  showContent: boolean = false;
+
+  toggleContent() {
+    this.showContent = !this.showContent;
+  }
 
   constructor(
     private pokemonService: PokemonService,
@@ -22,6 +32,7 @@ export class PokemonComponent implements OnInit {
     private router: Router
     ) {
     }
+  
 
   ngOnInit(): void {
     
@@ -38,7 +49,9 @@ export class PokemonComponent implements OnInit {
         
         for (let i = 0; i < pokeData2.types.length; i++) {
           const typeList = pokeData2.types[i].type.name;
-          this.type.push(typeList);
+          this.typeData.push(typeList);
+          this.type = this.typeData.join('-');
+         
         }
 
         for (let i = 0; i < pokeData2.moves.length; i++) {
@@ -49,10 +62,12 @@ export class PokemonComponent implements OnInit {
 
         const pokemonData = {
           id: pokeData2.id,
-          img: pokeData2.sprites.other.home.front_default,
+          img: pokeData2.sprites.other.dream_world.front_default,
+          home_img: pokeData2.sprites.other.home.front_default,
+          master_img: pokeData2.sprites.other['official-artwork'].front_default,
           name: pokeData2.name,
-          height: pokeData2.height,
-          weight: pokeData2.weight,
+          height: (pokeData2.height*.10).toFixed(2),
+          weight: (pokeData2.weight*.10).toFixed(2),
           order: pokeData2.order,
           type: this.type,
           moves: this.moves,
